@@ -1,6 +1,7 @@
 /* global $ */
 
 import 'summernote/dist/summernote';
+import 'summernote/dist/summernote-lite';
 import 'summernote/dist/summernote.css';
 import 'codemirror/lib/codemirror.css';
 import React, { Component } from 'react';
