@@ -32,11 +32,11 @@
   "dependencies": {
     "codemirror": "^5.26.0",
     "prop-types": "^15.5.10",
-    "summernote": "^0.8.15"
+    "summernote": "^0.8.16"
   },
   "peerDependencies": {
     "jquery": "^2.2.0 || ^3.0.0",
-    "react": "^15.0.0",
+    "react": "^16.0.0",
     "react-dom": "*"
   },
   "devDependencies": {
