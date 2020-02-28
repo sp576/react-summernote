@@ -55,23 +55,25 @@ class ReactSummernote extends Component {
     if (codeview) {
       this.editor.summernote('codeview.activate');
     }
+    if (typeof this.props.value === 'string' && this.props.value.length > 0) {
+      this.replace(this.props.value);
+    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { props } = this;
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const nextProps = this.props;
 
     const codeview = nextProps.codeview;
     const codeviewCommand = codeview ? 'codeview.activate' : 'codeview.deactivate';
 
-
-    if (typeof nextProps.value === 'string' && props.value !== nextProps.value) {
+    if (typeof nextProps.value === 'string' && prevProps.value !== nextProps.value) {
       this.replace(nextProps.value);
     }
 
-    if (typeof nextProps.disabled === 'boolean' && props.disabled !== nextProps.disabled) {
+    if (typeof nextProps.disabled === 'boolean' && prevProps.disabled !== nextProps.disabled) {
       this.toggleState(nextProps.disabled);
     }
-    if (codeview !== props.codeview) {
+    if (codeview !== prevProps.codeview) {
       this.editor.summernote(codeviewCommand);
     }
   }

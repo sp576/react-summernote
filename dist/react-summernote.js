@@ -21278,24 +21278,28 @@ var ReactSummernote = function (_Component) {
       if (codeview) {
         this.editor.summernote('codeview.activate');
       }
+      console.log(this.props.value);
+      if (typeof this.props.value === 'string' && this.props.value.length > 0) {
+        console.log('hjmm');
+        this.replace(this.props.value);
+      }
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      var props = this.props;
-
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState, snapshot) {
+      var nextProps = this.props;
 
       var codeview = nextProps.codeview;
       var codeviewCommand = codeview ? 'codeview.activate' : 'codeview.deactivate';
 
-      if (typeof nextProps.value === 'string' && props.value !== nextProps.value) {
+      if (typeof nextProps.value === 'string' && prevProps.value !== nextProps.value) {
         this.replace(nextProps.value);
       }
 
-      if (typeof nextProps.disabled === 'boolean' && props.disabled !== nextProps.disabled) {
+      if (typeof nextProps.disabled === 'boolean' && prevProps.disabled !== nextProps.disabled) {
         this.toggleState(nextProps.disabled);
       }
-      if (codeview !== props.codeview) {
+      if (codeview !== prevProps.codeview) {
         this.editor.summernote(codeviewCommand);
       }
     }
