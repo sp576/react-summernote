@@ -21278,9 +21278,7 @@ var ReactSummernote = function (_Component) {
       if (codeview) {
         this.editor.summernote('codeview.activate');
       }
-      console.log(this.props.value);
       if (typeof this.props.value === 'string' && this.props.value.length > 0) {
-        console.log('hjmm');
         this.replace(this.props.value);
       }
     }
